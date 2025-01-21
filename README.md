@@ -1,3 +1,13 @@
+
+### Changes in this fork were targeted for an RTL-SDR Blog V.3. dongle used on Raspberry Pi 5
+
+ - Uses arm64v8/ubuntu instead of arm32v7/ubuntu, as the latter is not supported on on Raspbeery Pi5
+ - Uses drivers and tools from rtlsdrblog, instead of osmocom as additional features like direct sampling are supported in the v3 dongle with their drivers (https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/)
+ - Direct sampling mode is enabled when strating rtl_tcp
+
+--------------------------------------------------------------------------------------------------------
+### README from the original repo below 
+
 ### Dockerized RTL-SDR server for Raspberry Pi
 
 This Dockerfile allows you to easily deploy a native RTL-SDR server using Docker in your Raspberry Pi

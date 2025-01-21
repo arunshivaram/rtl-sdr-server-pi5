@@ -1,13 +1,14 @@
-FROM arm32v7/ubuntu
+FROM arm64v8/ubuntu
 
 # Install dependencies
-RUN apt-get update && apt-get install git cmake pkg-config libusb-1.0-0-dev -y
+RUN apt update
+RUN apt install git cmake pkg-config libusb-1.0-0-dev build-essential -y
 
 # Get driver repository
-RUN git clone git://git.osmocom.org/rtl-sdr.git
+RUN git clone https://github.com/rtlsdrblog/rtl-sdr-blog
 
 # Compile drivers
-RUN cd rtl-sdr && \
+RUN cd rtl-sdr-blog && \
         mkdir build && \
         cd build && \
         cmake ../ -DINSTALL_UDEV_RULES=ON && \
@@ -16,4 +17,4 @@ RUN cd rtl-sdr && \
         ldconfig
 
 # Execute RTL server
-ENTRYPOINT ["rtl_tcp", "-a", "0.0.0.0"]
+ENTRYPOINT ["rtl_tcp", "-D", "-a", "0.0.0.0"]
